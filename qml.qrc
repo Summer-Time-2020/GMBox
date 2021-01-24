@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>CustomWindow.qml</file>
+        <file>MouseWindow.qml</file>
+        <file>image/close.png</file>
+        <file>image/close1.png</file>
+        <file>image/maximize.png</file>
+        <file>image/minimize.png</file>
+        <file>image/restore.png</file>
+        <file>SideBar.qml</file>
+        <file>image/box.png</file>
+        <file>image/technology.png</file>
+    </qresource>
+</RCC>
