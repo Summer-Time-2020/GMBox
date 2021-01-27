@@ -11,5 +11,8 @@
         <file>SideBar.qml</file>
         <file>image/box.png</file>
         <file>image/technology.png</file>
+        <file>DisplayInterface.qml</file>
+        <file>NoticePage.qml</file>
+        <file>image/tip.png</file>
     </qresource>
 </RCC>

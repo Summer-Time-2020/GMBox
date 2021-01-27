@@ -13,13 +13,6 @@ Window {
     flags: Qt.FramelessWindowHint | Qt.Window
     color : "#A9AC97"
     opacity: 0.98
-    /*
-    Gradient {
-               GradientStop {position: 0.0; color: "green"}
-               GradientStop {position: 0.5; color: "red"}
-               GradientStop {position: 1.0; color: "gray"}
-    }
-    */
 
     //设置可拖动区域
     Rectangle{
@@ -65,7 +58,21 @@ Window {
 
     //设置左边操作栏
     SideBar{
+        id : sideBar
         sideBarHeight : customWin.height - moveRectangle.height
+    }
+
+    Component.onCompleted: {
+        displayInterface.changeDisplay("NoticePage.qml")
+    }
+
+    DisplayInterface{
+        id: displayInterface
+    }
+
+    function uploadGui(resource)
+    {
+        mainLoad.source = resource
     }
 
     /* 关闭按钮 */

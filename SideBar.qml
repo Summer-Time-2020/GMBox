@@ -148,7 +148,7 @@ Rectangle {
                         visible: y !== (-1 * secondBookmarkListView.height)
                         boundsBehavior: Flickable.StopAtBounds
 
-                        //Behavior on y { NumberAnimation { easing.type: Easing.InOutQuad; duration: 400 } }
+                        Behavior on y { NumberAnimation { easing.type: Easing.InOutQuad; duration: 400 } }
 
                         model: ListModel {
                             id: secondBookmarkListModel
@@ -187,7 +187,7 @@ Rectangle {
 
                             Rectangle {
                                 anchors.fill: parent
-                                color: "#ffffff"
+                                color: "#5E5F5A"
                                 visible: secondBookmarkListView.y !== 0
 
                                 MaterialLabel {
@@ -195,6 +195,7 @@ Rectangle {
                                     height: parent.height
                                     text: bookmarkName
                                     font.pixelSize: 16
+                                    color: ( currentItemTitleNameLabel === titleName ) ? ( "#ffffff" ) : ( "#97ac9e" )
                                     verticalAlignment: Text.AlignVCenter
                                 }
                             }
