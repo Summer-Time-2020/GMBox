@@ -63,7 +63,7 @@ Window {
     }
 
     Component.onCompleted: {
-        displayInterface.changeDisplay("NoticePage.qml")
+        displayInterface.changeDisplay("SM3.qml")
     }
 
     DisplayInterface{

@@ -8,6 +8,7 @@ Rectangle{
     anchors.bottom: parent.bottom
     anchors.right: parent.right
     color: "#123456"
+
     //opacity : 0
 
     Loader{

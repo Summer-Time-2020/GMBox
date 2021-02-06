@@ -15,5 +15,7 @@
         <file>NoticePage.qml</file>
         <file>image/tip.png</file>
         <file>image/info.png</file>
+        <file>SM3.qml</file>
+        <file>image/file.png</file>
     </qresource>
 </RCC>
