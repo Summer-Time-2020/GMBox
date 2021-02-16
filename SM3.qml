@@ -5,6 +5,11 @@ Rectangle {
     color : "#ffffff"
     opacity: 0.98
 
+    /* 数据模型 */
+    ListModel {
+         id: listModel1
+     }
+
     /* 文件导入栏 */
     Rectangle{
         id: loadFileLoad
@@ -32,14 +37,14 @@ Rectangle {
            }
            onExited: {
                console.log("DropArea onExited")
-                loadFileLoad.color = "#ffffff"
+               loadFileLoad.color = "#ffffff"
            }
            onDropped: {
                loadFileLoad.color = "#ffffff"
                if(drop.hasUrls){
-                   console.log(drop.urls.length);
                    for(var i = 0; i < drop.urls.length; i++){
-                       console.log(drop.urls[i]);
+                       var path = drop.urls[i]
+                       listModel1.append({txtName : path.substr(8, path.length)})
                    }
                }
            }
@@ -82,7 +87,8 @@ Rectangle {
                 id: fileDialog
                 folder: StandardPaths.writableLocation(StandardPaths.DocumentsLocation)
                 onFileChanged: {
-                    console.log("fileDialog onFileChanged")
+                    var path = fileDialog.currentFile.toString()
+                    listModel1.append({txtName : path.substr(8, path.length)})
                 }
             }
         }
@@ -95,6 +101,89 @@ Rectangle {
             font.pointSize: 14
             color: "#0366D6"
             text: "     选择您的文件"
+        }
+    }
+
+    /* 待计算的文件列表 */
+    Rectangle{
+        id: fileList
+        anchors.top: loadFileLoad.bottom
+        anchors.topMargin: 15
+        width: parent.width-2
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.bottom: sureButton.bottom
+        anchors.bottomMargin: 45
+        //border.color: "#000000"
+
+        /* 列表效果 */
+        Component {
+            id: delegate_list1
+            Rectangle {
+                id: delegate_list_rct1
+                height: 34
+                width: ListView.view.width
+
+                //color: ListView.isCurrentItem?"#157efb":"#FFFFFF" //选中颜色设置
+                color: "#FFFFFF"
+                Text {
+                    x: 5
+                    anchors.verticalCenter: parent.verticalCenter
+                    text: txtName
+                    //color: ListView.isCurrentItem ? "#FFFFFF" : "#000000" //选中颜色设置
+                    color: "#000000"
+                }
+
+                /*
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked:  {
+                        console.log("a");
+                        listView1.currentIndex = index
+                    }
+                }
+                */
+
+                /* 删除按钮 */
+                Rectangle{
+                    height: 15
+                    width: 15
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.right: parent.right
+                    anchors.rightMargin: 15
+                    //border.color: "#000000"
+                    Image {
+                        id: deleteImage
+                        source: "image/close2.png"
+                        anchors.fill: parent
+                    }
+                    MouseArea{
+                        anchors.fill: parent
+                        hoverEnabled: true
+                        propagateComposedEvents: true
+                        onEntered: {
+                            deleteImage.source = "image/close3.png"
+                        }
+                        onPressed: {
+                            console.log("abc")
+                            listModel1.remove(index, 1)
+                        }
+                        onExited: {
+                            deleteImage.source = "image/close2.png"
+                        }
+                    }
+                }
+            }
+        }
+
+        /* 列表属性设置 */
+        ListView {
+            id: listView1
+            anchors.fill: parent
+            model: listModel1
+            delegate: delegate_list1
+           // highlight: highlight1 // 高亮设置
+           // highlightFollowsCurrentItem: true
+            focus: true // 获取焦点
         }
     }
 

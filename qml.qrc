@@ -17,5 +17,7 @@
         <file>image/info.png</file>
         <file>SM3.qml</file>
         <file>image/file.png</file>
+        <file>image/close2.png</file>
+        <file>image/close3.png</file>
     </qresource>
 </RCC>
