@@ -1,5 +1,8 @@
+
 import QtQuick 2.0
 import Qt.labs.platform 1.1
+import GMBox 1.0
+import DataModel 1.0
 
 Rectangle {
     color : "#ffffff"
@@ -8,7 +11,11 @@ Rectangle {
     /* 数据模型 */
     ListModel {
          id: listModel1
-     }
+    }
+
+    DataModel{
+        id : dataModel1
+    }
 
     /* 文件导入栏 */
     Rectangle{
@@ -45,6 +52,7 @@ Rectangle {
                    for(var i = 0; i < drop.urls.length; i++){
                        var path = drop.urls[i]
                        listModel1.append({txtName : path.substr(8, path.length)})
+                       dataModel1.append( "filename", path.substr(8, path.length))
                    }
                }
            }
@@ -89,6 +97,7 @@ Rectangle {
                 onFileChanged: {
                     var path = fileDialog.currentFile.toString()
                     listModel1.append({txtName : path.substr(8, path.length)})
+                    dataModel1.append( "filename", path.substr(8, path.length))
                 }
             }
         }
@@ -128,7 +137,7 @@ Rectangle {
                 Text {
                     x: 5
                     anchors.verticalCenter: parent.verticalCenter
-                    text: txtName
+                    text: dataModel1.data(index)
                     //color: ListView.isCurrentItem ? "#FFFFFF" : "#000000" //选中颜色设置
                     color: "#000000"
                 }
@@ -166,6 +175,7 @@ Rectangle {
                         onPressed: {
                             console.log("abc")
                             listModel1.remove(index, 1)
+                            dataModel1.remove(index)
                         }
                         onExited: {
                             deleteImage.source = "image/close2.png"
@@ -179,7 +189,7 @@ Rectangle {
         ListView {
             id: listView1
             anchors.fill: parent
-            model: listModel1
+            model: dataModel1 //dataModel1
             delegate: delegate_list1
            // highlight: highlight1 // 高亮设置
            // highlightFollowsCurrentItem: true
@@ -197,6 +207,19 @@ Rectangle {
         height: 30
         radius: 5
         color: "#2C974B"
+        MouseArea{
+            anchors.fill: parent
+            hoverEnabled: true
+            onEntered: {
+                parent.color = "#2C884B"
+            }
+            onPressed: {
+               gmbox.sm3Files(listModel1)
+            }
+            onExited: {
+                parent.color = "#2C974B"
+            }
+        }
         Text {
             anchors.verticalCenter: parent.verticalCenter
             anchors.horizontalCenter: parent.horizontalCenter
@@ -204,6 +227,7 @@ Rectangle {
             text: "确 定"
             font.pixelSize: 17
         }
+
     }
 
 }

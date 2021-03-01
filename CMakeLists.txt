@@ -29,12 +29,22 @@ find_package(Qt5 COMPONENTS Core Quick REQUIRED)
 if(ANDROID)
     add_library(GMBox SHARED
       main.cpp
+      radialbar.h
+      radialbar.cpp
+      gmbox.cpp
+      gmbox.h
       qml.qrc
       MaterialUI.qrc
     )
 else()
     add_executable(GMBox
       main.cpp
+      gmbox.cpp
+      gmbox.h
+      filesmodel.h
+      filesmodel.cpp
+      radialbar.h
+      radialbar.cpp
       qml.qrc
       MaterialUI.qrc
     )

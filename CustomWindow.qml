@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Window 2.14
+import GMBox 1.0
 
 Window {
     id : customWin
@@ -13,6 +14,15 @@ Window {
     flags: Qt.FramelessWindowHint | Qt.Window
     color : "#A9AC97"
     opacity: 0.98
+
+    GMBox{
+        id: gmbox
+    }
+
+    // 进度条窗口
+    ProgressWindow{
+        id: progressWindow
+    }
 
     //设置可拖动区域
     Rectangle{

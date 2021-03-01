@@ -1,12 +1,18 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include "radialbar.h"
+#include "gmbox.h"
+#include "filesmodel.h"
+
 
 int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+    qmlRegisterType<RadialBar>("CustomControls", 1, 0, "RadialBar");
+    qmlRegisterType<GMBox>("GMBox", 1, 0, "GMBox");
+    qmlRegisterType<DataModel>("DataModel", 1, 0, "DataModel");
 
     QGuiApplication app(argc, argv);
-
     QQmlApplicationEngine engine;
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
