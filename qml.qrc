@@ -1,24 +1,27 @@
 <RCC>
     <qresource prefix="/">
-        <file>main.qml</file>
-        <file>CustomWindow.qml</file>
-        <file>MouseWindow.qml</file>
-        <file>image/close.png</file>
-        <file>image/close1.png</file>
-        <file>image/maximize.png</file>
-        <file>image/minimize.png</file>
-        <file>image/restore.png</file>
-        <file>SideBar.qml</file>
-        <file>image/box.png</file>
-        <file>image/technology.png</file>
-        <file>DisplayInterface.qml</file>
-        <file>NoticePage.qml</file>
-        <file>image/tip.png</file>
-        <file>image/info.png</file>
-        <file>SM3.qml</file>
-        <file>image/file.png</file>
-        <file>image/close2.png</file>
-        <file>image/close3.png</file>
-        <file>ProgressWindow.qml</file>
+        <file>qml/main.qml</file>
+        <file>qml/CustomWindow.qml</file>
+        <file>qml/MouseWindow.qml</file>
+        <file>qml/image/close.png</file>
+		<file>qml/SideBar.qml</file>
+		<file>qml/DisplayInterface.qml</file>
+        <file>qml/NoticePage.qml</file>
+		<file>qml/DisplayInterface.qml</file>
+        <file>qml/NoticePage.qml</file>
+		<file>qml/SM3.qml</file>
+        <file>qml/ProgressWindow.qml</file>		
+        <file>qml/image/close1.png</file>
+        <file>qml/image/maximize.png</file>
+        <file>qml/image/minimize.png</file>
+        <file>qml/image/restore.png</file>
+        <file>qml/image/box.png</file>
+        <file>qml/image/technology.png</file>
+        <file>qml/image/tip.png</file>
+        <file>qml/image/info.png</file>      
+        <file>qml/image/file.png</file>
+        <file>qml/image/close2.png</file>
+        <file>qml/image/close3.png</file>
+
     </qresource>
 </RCC>

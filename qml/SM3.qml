@@ -214,7 +214,7 @@ Rectangle {
                 parent.color = "#2C884B"
             }
             onPressed: {
-               gmbox.sm3Files(listModel1)
+               gmbox.sm3Files(dataModel1)
             }
             onExited: {
                 parent.color = "#2C974B"

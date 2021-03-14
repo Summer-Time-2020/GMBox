@@ -34,7 +34,7 @@
         <file>Interface/MaterialTabs.qml</file>
         <file>Interface/MaterialTextField.qml</file>
         <file>Interface/MaterialTabbed.qml</file>
-        <file>MaterialUI.qml</file>
+        <file>qml/MaterialUI.qml</file>
         <file>Material-Design-Iconic-Font.ttf</file>
         <file>Interface/MaterialPage.qml</file>
         <file>Interface/MaterialTreeView.qml</file>

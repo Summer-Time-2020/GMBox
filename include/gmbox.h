@@ -18,6 +18,7 @@
 
 #include <QObject>
 #include <QAbstractListModel>
+#include "filesmodel.h"
 
 class GMBox : public QObject
 {
@@ -26,9 +27,10 @@ public:
     GMBox(){};
     ~GMBox(){} ;
 
-    Q_INVOKABLE void sm3Files(const QAbstractListModel &listmodel);
+    Q_INVOKABLE void sm3Files(DataModel *listmodel);
 
 private:
+    std::string readFile(const std::string &path);
 
 };
 

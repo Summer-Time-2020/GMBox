@@ -26,29 +26,16 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(Qt5 COMPONENTS Core Quick REQUIRED)
 
-if(ANDROID)
-    add_library(GMBox SHARED
-      main.cpp
-      radialbar.h
-      radialbar.cpp
-      gmbox.cpp
-      gmbox.h
-      qml.qrc
-      MaterialUI.qrc
-    )
-else()
-    add_executable(GMBox
-      main.cpp
-      gmbox.cpp
-      gmbox.h
-      filesmodel.h
-      filesmodel.cpp
-      radialbar.h
-      radialbar.cpp
-      qml.qrc
-      MaterialUI.qrc
-    )
-endif()
+include_directories(${CMAKE_SOURCE_DIR}/include)
+file(GLOB_RECURSE CURRENT_HEADERS  *.h *.hpp)
+aux_source_directory(${CMAKE_SOURCE_DIR}/src SRC_LIST) # 搜索当前目录下的所有.cpp文件
+
+add_executable(GMBox
+  qml.qrc
+  MaterialUI.qrc
+  ${SRC_LIST}
+  ${CURRENT_HEADERS}
+)
 
 target_compile_definitions(GMBox
   PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
